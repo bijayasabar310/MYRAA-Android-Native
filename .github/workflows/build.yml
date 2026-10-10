@@ -25,15 +25,25 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          accept-android-sdk-licenses: true
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+
+      - name: Prepare Android SDK
+        run: |
+          SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          echo "SDK_ROOT=$SDK_ROOT"
+          echo "sdk.dir=$SDK_ROOT" > local.properties
+          SM="$(command -v sdkmanager || true)"
+          if [ -z "$SM" ] && [ -x "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" ]; then
+            SM="$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+          fi
+          echo "sdkmanager=$SM"
+          if [ -n "$SM" ]; then
+            yes | "$SM" --licenses > /dev/null 2>&1 || true
+            "$SM" "platform-tools" "platforms;android-35" "build-tools;35.0.0" > /dev/null 2>&1 || true
+          fi
 
       - name: Build debug APK
         run: gradle assembleDebug --no-daemon --stacktrace

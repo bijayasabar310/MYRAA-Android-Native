@@ -1,4 +1,4 @@
-package ai.myraa.native
+package ai.myraa.app
 
 import kotlinx.coroutines.flow.MutableStateFlow
 

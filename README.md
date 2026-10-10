@@ -9,7 +9,7 @@ keeps the character and the core features, and drops the desktop tooling.
 
 - **Kotlin + Jetpack Compose**, Android Studio compatible, Gradle 8.9 / AGP 8.7.3 / Kotlin 2.0.21.
 - `minSdk 26` (Android 8.0) · `targetSdk 35` (Android 15+).
-- Package / application id: `ai.myraa.native`.
+- Package / application id: `ai.myraa.app`.
 
 ## Features
 

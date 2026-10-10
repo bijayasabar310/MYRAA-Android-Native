@@ -1,4 +1,4 @@
-package ai.myraa.native
+package ai.myraa.app
 
 import android.app.AlarmManager
 import android.app.NotificationChannel

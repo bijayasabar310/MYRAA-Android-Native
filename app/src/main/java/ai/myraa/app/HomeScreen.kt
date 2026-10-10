@@ -1,4 +1,4 @@
-package ai.myraa.native
+package ai.myraa.app
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

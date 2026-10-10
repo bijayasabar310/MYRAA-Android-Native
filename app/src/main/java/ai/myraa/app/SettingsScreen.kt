@@ -1,4 +1,4 @@
-package ai.myraa.native
+package ai.myraa.app
 
 import android.Manifest
 import android.content.Context
